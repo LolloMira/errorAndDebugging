@@ -127,4 +127,22 @@
 
 // creare una funzione csvParse convertire la stringa in un array di numeri, se c'è un elemento che non è parsabile, farsi parsare la stringa scrivendo oggetto non parsabile     csv= file contenente virgole "es 12,34,35,64" 
 
-console.log(Parser.csvParse("1,3; 3; 3,3; 5; "));
+//console.log(Parser.csvParse("1,3; 3; 3,3; 5; "));
+
+let string = "5, 2, 5, 3\n 5, 2, 4, 5\n 3, 2, 4, 5";
+
+let newArray = string.split("\n");
+console.log(newArray);
+
+try {
+    console.log(Parser.csvParse("ciao; ciao; ciao; ciao; "));
+} catch (error) {
+    if (error instanceof PartialInvalidStringError) {
+        console.log(error.message);
+        console.log(error.array);
+    } else if(error instanceof InvalidStringError){
+        console.log(error.message);
+    } else if(error instanceof EmptyStringError){
+        console.log(error.message);
+    }
+}
